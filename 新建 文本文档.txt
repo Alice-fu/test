@@ -1,0 +1,585 @@
+MODULE MainModule
+    PERS num offsetz_floor1:=39;
+    CONST jointtarget house_safe:=[[-1.22943,17.8116,-5.95393,2.32733,74.4505,120.871],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST jointtarget Home:=[[1.3132,-46.4714,38.521,-1.4404,97.2089,123.827],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST jointtarget JP10:=[[2.87799,31.138,-2.25507,-2.75691,60.0887,140.208],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST jointtarget JP20:=[[-12.6965,25.9291,-2.02075,43.2378,60.6532,111.671],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST jointtarget JP30:=[[-0.614161,-7.20866,33.8026,11.6184,59.7391,119.685],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST jointtarget JP40:=[[1.3132,-46.4714,38.521,-1.4404,97.2089,123.827],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST jointtarget JP60:=[[20.2785,43.914,-33.6665,7.25213,95.1714,-227.794],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST jointtarget pload:=[[-33.8686,52.4661,11.8011,-4.50009,12.1562,316.955],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    PERS robtarget Camera_POS:=[[484.11,-277.85,1153.26],[0.174773,0.748974,-0.61487,-0.174435],[-1,-1,1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget ptem;
+    VAR robtarget Make_p1_1:=[[1272.18,6.01,1148.7],[0.00187547,0.00152835,-0.999991,-0.00345477],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p1_2:=[[1272.18,6.01,1148.7],[0.00187547,0.00152835,-0.999991,-0.00345477],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p2_1:=[[1820.33,-179.79,78.22],[0.0213437,0.871806,0.489378,-0.00275132],[-1,-1,1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p2_2:=[[2098.95,-138.79,91.00],[0.0227789,0.872458,0.488156,-0.000988687],[-1,-1,1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p3_1:=[[1922.91,-381.94,82.35],[0.0252442,0.738886,0.673351,-0.00286538],[-1,-1,1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p3_2:=[[2098.97,-138.78,91.01],[0.0219624,0.738747,0.673597,-0.00613416],[-1,-1,1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p4_1:=[[2061.98,-420.79,82.34],[0.0237327,0.548874,0.835519,-0.00903513],[-1,-1,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p4_2:=[[2098.97,-138.77,91.01],[0.0195561,0.534135,0.845092,-0.0117276],[-1,-1,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p5_1:=[[2194.64,-413.82,82.38],[0.0202067,0.289324,0.956894,-0.0153991],[-1,-1,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p5_2:=[[2098.95,-138.80,91.00],[0.0151088,0.254794,0.966726,-0.0170745],[-1,-1,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p6_1:=[[2334.01,-336.39,82.40],[0.0158486,0.0465564,0.998592,-0.0198706],[-1,-1,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p6_2:=[[2098.96,-138.78,91.00],[0.0107354,0.0234195,0.999466,-0.0201159],[-1,-1,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p7_1:=[[2419.91,-191.57,82.42],[0.0103678,-0.204968,0.978438,-0.0232072],[-1,-1,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p7_2:=[[2098.95,-138.80,91.00],[0.00542545,-0.224276,0.974259,-0.0221435],[-1,-1,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p8_1:=[[2422.17,-33.60,82.41],[0.00399003,-0.451902,0.891706,-0.0251003],[-1,-1,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p8_2:=[[2098.97,-138.77,91.01],[0.000440689,0.467095,-0.883913,0.0227976],[-1,-1,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p9_1:=[[2356.00,130.03,82.42],[0.00158058,0.635764,-0.771464,0.0253914],[0,-1,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p9_2:=[[2098.95,-138.79,91.00],[0.00573881,0.660061,-0.750865,0.0220673],[-1,-1,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p10_1:=[[2211.28,202.59,82.41],[0.00796906,0.810824,-0.584737,0.0241613],[0,-1,-2,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p10_2:=[[2098.95,-138.79,91.00],[0.0103883,0.807227,-0.5898,0.0202975],[-1,-1,-2,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p11_1:=[[2044.08,207.99,82.42],[0.0146098,0.945327,-0.325129,0.0208329],[0,-1,-2,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p11_2:=[[2098.97,-138.77,91.01],[0.0154866,0.936601,-0.349654,0.0167389],[-1,-1,-2,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p12_1:=[[1910.28,141.02,82.44],[0.020121,0.999465,-0.0234286,0.0107337],[0,-1,-2,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p12_2:=[[2098.96,-138.77,91.01],[0.0199184,0.998875,-0.0415787,0.0111014],[-1,-1,-2,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p13_1:=[[1813.96,-29.98,91.01],[0.021917,0.982326,0.185785,0.00630695],[-1,-1,-3,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p13_2:=[[2098.95,-138.79,91.00],[0.0219146,0.98233,0.185761,0.00629815],[-1,-1,-3,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p14_1:=[[1272.18,6.01,1148.7],[0.00187547,0.00152835,-0.999991,-0.00345477],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p14_2:=[[1272.18,6.01,1148.7],[0.00187547,0.00152835,-0.999991,-0.00345477],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p15_1:=[[1272.18,6.01,1148.7],[0.00187547,0.00152835,-0.999991,-0.00345477],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget Make_p15_2:=[[1272.18,6.01,1148.7],[0.00187547,0.00152835,-0.999991,-0.00345477],[0,0,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget p202:=[[2188.68,306.12,610.92],[0.012565,-0.56309,-0.825401,-0.0385454],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget p205:=[[2188.68,306.12,610.92],[0.012565,-0.56309,-0.825401,-0.0385454],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget p206:=[[2188.68,306.12,610.92],[0.012565,-0.56309,-0.825401,-0.0385454],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget p130:=[[2188.68,306.12,610.92],[0.012565,-0.56309,-0.825401,-0.0385454],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget p131:=[[2188.68,306.12,610.92],[0.012565,-0.56309,-0.825401,-0.0385454],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget p132:=[[2188.68,306.12,610.92],[0.012565,-0.56309,-0.825401,-0.0385454],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR robtarget p133:=[[2188.68,306.12,610.92],[0.012565,-0.56309,-0.825401,-0.0385454],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+
+
+    PERS intnum countrer:=2;
+    PERS intnum floor_counter:=1;
+    PERS intnum clamp_empty:=1;
+    PERS intnum a:=2300;
+    PERS intnum b:=150;
+    !????
+    PERS intnum height:=300;
+    PERS intnum Connect_ok:=1;
+
+    VAR num Connect_start:=0;
+    VAR num Connect_error:=0;
+    VAR num strnum;
+    VAR num counter;
+    VAR num result1:=1;
+    VAR num result2:=1;
+    VAR num result3:=1;
+    VAR num result4:=1;
+    VAR num result5:=1;
+    VAR num result6:=1;
+    VAR num result7:=1;
+    VAR num result8:=1;
+    VAR num result9:=1;
+    VAR num result10:=1;
+    VAR num result11:=1;
+    VAR num result12:=1;
+    VAR num result13:=1;
+    VAR num result14:=1;
+    VAR num result15:=1;
+    VAR num result16:=1;
+    VAR num result17:=1;
+    VAR num result18:=1;
+    VAR num result19:=1;
+    VAR num result20:=1;
+
+    VAR num U:=0;
+    VAR num J:=0;
+    VAR num K:=0;
+
+    VAR num z_offset:=0;
+    VAR num camera_ok:=0;
+    VAR num result_all:=0;
+    VAR num camera_over:=0;
+    VAR bool bResult:=FALSE;
+    !
+    !........STRING.......
+    !
+    VAR socketdev client;
+    VAR string strData;
+    VAR string Robot_Receive;
+    VAR string received_string;
+    !
+    !........TOOL.......
+    !
+    TASK PERS tooldata zhang0227:=[TRUE,[[-119.668,-173.016,879.2],[1,0,0,0]],[30,[0,0,40],[1,0,0,0],0,0,0]];
+    TASK PERS tooldata zhangA:=[TRUE,[[-325.55,-47.8464,874.469],[0.372617,-0.0246524,-0.02863,0.927216]],[50,[0,0,40],[1,0,0,0],0,0,0]];
+    !
+    !........SPEED.......
+    !
+    VAR speeddata speed1:=[0,0,0,0];
+    CONST speeddata speed2:=[15,800,5000,1000];
+    CONST speeddata speed3:=[750,500,5000,1000];
+    CONST speeddata speed4:=[750,500,5000,1000];
+    CONST speeddata speed5:=[750,500,5000,1000];
+    CONST speeddata speed6:=[1400,500,5000,1000];
+    CONST speeddata speed7:=[300,700,5000,1000];
+    CONST speeddata vfast:=[2000,2000,5000,1000];
+    CONST speeddata vmid:=[1000,1000,5000,1000];
+    CONST speeddata vslow:=[500,500,5000,1000];
+    CONST jointtarget JP100:=[[1.64884,21.7068,-5.8797,0.000620497,74.1691,142.109],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST jointtarget JCamera_pos:=[[-1.03897,-37.3679,35.9733,-1.13081,116.078,121.694],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST speeddata speed8:=[500,500,5000,1000];
+    CONST jointtarget JP70:=[[1.3132,-46.4712,38.521,-1.4404,97.2089,123.827],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    CONST robtarget p70:=[[2047.14,-65.76,1143.12],[0.0140211,0.877513,0.479349,-1.05101E-05],[-1,-1,1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    VAR intnum intno1:=0;
+    CONST robtarget p203:=[[2224.89,168.68,623.23],[0.0174707,-0.455393,-0.889367,-0.0365666],[-1,0,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]];
+    
+
+
+    PROC main()
+        point1;
+        init;
+        J:=1;
+        WHILE TRUE DO
+            camera;
+            Loading1;
+            !make_PosZ;
+            !make_up;
+            !IF result1=2 OR result2=2 OR result3=2 OR result4=2 OR result5=2 OR result6=2 OR result7=2 OR result8=2 OR result9=2 OR result10=2 OR result11=2 OR result12=2 OR result13=2 THEN
+            !Loading1;
+            !ENDIF
+            U:=0;
+            IF offsetz_floor1>800 AND offsetz_floor1<950 THEN
+                J:=1;
+            ELSEIF offsetz_floor1>950 THEN
+                GOTO E;
+            ENDIF
+            FOR U FROM 1 TO J DO
+                Unload1;
+                make_PosZ2;
+                MoveJ p130,V1000,z200,tool0;
+                open_clamp;
+                MoveJ p131,V1000,z200,tool0;
+                MoveJ p132,V1000,z200,tool0;
+                MoveJ p133,V1000,z200,tool0;
+                close_clamp;
+                Routine1_1_1;
+                Routine1_1_2;
+                !Routine1_1_3;
+            ENDFOR
+        ENDWHILE
+        E:
+        Socket_Connection;
+        SocketSend client\Str:="YES";
+    ENDPROC
+
+
+
+    PROC point1()
+        WHILE FALSE DO
+            MoveAbsj Home,vfast,fine,tool0\WObj:=wobj0;
+            MoveAbsj house_safe,vfast,fine,tool0\WObj:=wobj0;
+            Movej Camera_POS,v500,fine,zhangA;
+            MoveJ p10,v500,fine,zhangA;
+            MoveJ p20,v500,fine,zhangA;
+            MoveJ p30,v500,fine,zhangA;
+            MoveJ p40,v500,fine,tool0;
+            MoveJ p50,v500,fine,tool0;
+            MoveAbsj JP10,vfast,fine,tool0\WObj:=wobj0;
+            MoveAbsj JP100,vfast,fine,tool0\WObj:=wobj0;
+            MoveAbsj JP20,vfast,fine,tool0\WObj:=wobj0;
+            MoveAbsj JP30,vfast,fine,tool0\WObj:=wobj0;
+            MoveAbsj JP40,vfast,fine,tool0\WObj:=wobj0;
+            MoveAbsJ JP50\NoEOffs,vfast,fine,tool0;
+        ENDWHILE
+
+    ENDPROC
+
+
+    PROC camera()
+        Socket_Connection;
+        MoveAbsJ JCamera_pos\NoEOffs,v1000,z50,zhangA;
+        MoveL Camera_POS,v1000,fine,zhangA;
+        WaitTime 0.2;
+        A:
+        SocketSend client\Str:="a1";
+        WaitTime 0.8;
+        SocketReceive client\Str:=received_string;
+        TPWrite "Server wrote - "+received_string;
+        Robot_Receive:=received_string;
+        WaitTime 0.2;
+        rStrPart Robot_Receive;
+        IF camera_ok=0 THEN
+            GOTO A;
+        ENDIF
+        camera_over:=1;
+        MoveAbsj house_safe,v1000,z200,zhangA;
+    ENDPROC
+
+
+
+    PROC open_clamp()
+        setdo do_line,1;
+        setdo do_roller,1;
+        WaitTime 0.3;
+    ENDPROC
+
+    PROC close_clamp()
+        setdo do_line,0;
+        setdo do_roller,0;
+        WaitTime 0.6;
+    ENDPROC
+
+    TRAP go_to_Loading
+        VAR robtarget p201;
+        StopMove;
+        close_clamp;
+        StorePath;
+        P201:=CRobT(\Tool:=zhangA\WObj:=wobj0);
+        clamp_load2;
+        Loading1;
+        MoveJ [[2773.71,59.96,499.14],[0.0525023,0.995978,0.071995,0.00940513],[0,-1,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]],v1000,z200,zhangA;
+        MoveJ [[2365.97,161.88,481.88],[0.0205053,0.617576,0.786015,0.0189635],[-1,-1,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]],v1000,z200,zhangA;
+        MoveJ p202,v1000,z200,zhangA;
+        MoveL p201,v1000,fine,zhangA;
+        open_clamp;
+        RestoPath;
+        StartMove;
+    ENDTRAP
+
+    TRAP go_to_Loading2
+        VAR robtarget p205;
+        StopMove;
+        close_clamp;
+        StorePath;
+        P205:=CRobT(\Tool:=tool0\WObj:=wobj0);
+        clamp_load3;
+        Loading1;
+        MoveJ [[2474.89,545.94,1367.29],[0.012306,0.29987,0.953758,-0.0165151],[0,-1,0,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]],v1000,z100,tool0;
+        MoveJ [[2245.63,250.80,1367.35],[0.00535352,0.566261,-0.823971,0.019812],[0,-1,-1,0],[9E+09,9E+09,9E+09,9E+09,9E+09,9E+09]],v1000,z100,tool0;
+        MoveJ p206,v1000,z100,tool0;
+        MoveJ p205,v1000,fine,tool0;
+        open_clamp;
+        RestoPath;
+        StartMove;
+    ENDTRAP
+
+
+
+
+
+
+    PROC init()
+        camera_over:=0;
+        floor_counter:=1;
+        countrer:=floor_counter+1;
+        close_clamp;
+        clamp_empty:=1;
+        motionstep:=1;
+        U:=0;
+        J:=0;
+        IDelete intno1;
+    ENDPROC
+
+    PROC Socket_Connection()
+        ! Communication    
+        Connect_error:=0;
+        Connect_ok:=0;
+        Connect_start:=0;
+        SocketClose client;
+        SocketCreate client;
+        Connect_start:=1;
+        SocketConnect client,"192.168.1.1",3001;
+        Connect_start:=0;
+        Connect_ok:=1;
+        !Server IP Address
+    ERROR
+        IF ERRNO=ERR_SOCK_TIMEOUT THEN
+            RETRY;
+        ELSEIF ERRNO=ERR_SOCK_NET_UNREACH THEN
+            TPWrite "net error:can not reach the camera 192.168.1.1";
+            Connect_error:=1;
+        ELSE
+            ! No error recovery handling
+        ENDIF
+    ENDPROC
+
+    PROC rStrPart(string received_string)
+        camera_ok:=0;
+        result1:=1;
+        result2:=1;
+        result3:=1;
+        result4:=1;
+        result5:=1;
+        result6:=1;
+        result7:=1;
+        result8:=1;
+        result9:=1;
+        result10:=1;
+        result11:=1;
+        result12:=1;
+        result13:=1;
+        result14:=1;
+        result15:=1;
+        result16:=1;
+        result17:=1;
+        result18:=1;
+        result19:=1;
+        result20:=1;
+        strnum:=1;
+        FOR i FROM 1 TO 15 DO
+            counter:=StrFind(Robot_Receive,strnum,",");
+            strData:=StrPart(Robot_Receive,strnum,counter-strnum);
+            TEST i
+            CASE 1:
+                TPWrite "camera_ok="+strData;
+                bResult:=StrToVal(strData,camera_ok);
+            CASE 2:
+                TPWrite "z="+strData;
+                bResult:=StrToVal(strData,offsetz_floor1);
+            CASE 3:
+                bResult:=StrToVal(strData,result1);
+                IF result1=0 THEN
+                    TPWrite "result1";
+                ENDIF
+            CASE 4:
+                bResult:=StrToVal(strData,result2);
+                IF result2=0 THEN
+                    TPWrite "result2";
+                ENDIF
+            CASE 5:
+                bResult:=StrToVal(strData,result3);
+                IF result3=0 THEN
+                    TPWrite "result3";
+                ENDIF
+            CASE 6:
+                bResult:=StrToVal(strData,result4);
+                IF result4=0 THEN
+                    TPWrite "result4";
+                ENDIF
+            CASE 7:
+                bResult:=StrToVal(strData,result5);
+                IF result5=0 THEN
+                    TPWrite "result5";
+                ENDIF
+            CASE 8:
+                bResult:=StrToVal(strData,result6);
+                IF result6=0 THEN
+                    TPWrite "result6";
+                ENDIF
+            CASE 9:
+                bResult:=StrToVal(strData,result7);
+                IF result7=0 THEN
+                    TPWrite "result7";
+                ENDIF
+            CASE 10:
+                bResult:=StrToVal(strData,result8);
+                IF result8=0 THEN
+                    TPWrite "result8";
+                ENDIF
+            CASE 11:
+                bResult:=StrToVal(strData,result9);
+                IF result9=0 THEN
+                    TPWrite "result9";
+                ENDIF
+            CASE 12:
+                bResult:=StrToVal(strData,result10);
+                IF result10=0 THEN
+                    TPWrite "result10";
+                ENDIF
+            CASE 13:
+                bResult:=StrToVal(strData,result11);
+                IF result11=0 THEN
+                    TPWrite "result11";
+                ENDIF
+            CASE 14:
+                bResult:=StrToVal(strData,result12);
+                IF result12=0 THEN
+                    TPWrite "result12";
+                ENDIF
+            CASE 15:
+                bResult:=StrToVal(strData,result13);
+                IF result13=0 THEN
+                    TPWrite "result13";
+                ENDIF
+            DEFAULT:
+
+            ENDTEST
+            strnum:=counter+1;
+        ENDFOR
+        Robot_Receive:="";
+    ENDPROC
+
+    PROC make_PosZ()
+        Make_p2_1.trans.z:=offsetz_floor1+300;
+        Make_p2_2.trans.z:=offsetz_floor1+300;
+        !
+        Make_p3_1.trans.z:=offsetz_floor1+300;
+        Make_p3_2.trans.z:=offsetz_floor1+300;
+        !
+        Make_p4_1.trans.z:=offsetz_floor1+300;
+        Make_p4_2.trans.z:=offsetz_floor1+300;
+        !
+        Make_p5_1.trans.z:=offsetz_floor1+300;
+        Make_p5_2.trans.z:=offsetz_floor1+300;
+        !
+        Make_p6_1.trans.z:=offsetz_floor1+300;
+        Make_p6_2.trans.z:=offsetz_floor1+300;
+        !
+        Make_p7_1.trans.z:=offsetz_floor1+300;
+        Make_p7_2.trans.z:=offsetz_floor1+300;
+        !
+        Make_p8_1.trans.z:=offsetz_floor1+300;
+        Make_p8_2.trans.z:=offsetz_floor1+300;
+        !
+        Make_p9_1.trans.z:=offsetz_floor1+300;
+        Make_p9_2.trans.z:=offsetz_floor1+300;
+        !
+        Make_p10_1.trans.z:=offsetz_floor1+300;
+        Make_p10_2.trans.z:=offsetz_floor1+300;
+        !
+        Make_p11_1.trans.z:=offsetz_floor1+300;
+        Make_p11_2.trans.z:=offsetz_floor1+300;
+        !
+        Make_p12_1.trans.z:=offsetz_floor1+300;
+        Make_p12_2.trans.z:=offsetz_floor1+300;
+        !
+        Make_p13_1.trans.z:=offsetz_floor1+300;
+        Make_p13_2.trans.z:=offsetz_floor1+300;
+        !
+        Make_p14_1.trans.z:=offsetz_floor1+300;
+        Make_p14_2.trans.z:=offsetz_floor1+300;
+        !
+        Make_p15_1.trans.z:=offsetz_floor1+300;
+        Make_p15_2.trans.z:=offsetz_floor1+300;
+
+    ENDPROC
+
+    PROC make_PosZ2()
+        P130.trans.z:=offsetz_floor1+300;
+        P131.trans.z:=offsetz_floor1+300;
+        P132.trans.z:=offsetz_floor1+300;
+        P133.trans.z:=offsetz_floor1+300;
+    ENDPROC
+
+    PROC make_up()
+        K:=1;
+        speed1:=speed6;
+        Speed_set;
+        FOR K FROM 1 TO 13 DO
+            IF result1=0 THEN
+                !clamp_load;
+                MoveAbsJ JP50\NoEOffs,v1000,z50,tool0;
+                Circle_S4;
+                result1:=2;
+                clamp_load;
+            ENDIF
+            IF result2=0 THEN
+                clamp_load;
+                Movej Make_p2_1,v400,z10,tool0\WObj:=wobj0;
+                open_clamp;
+                Movej Make_p2_2,speed8,z10,tool0\WObj:=wobj0;
+                close_clamp;
+                result2:=2;
+                clamp_load;
+            ENDIF
+            IF result3=0 THEN
+                clamp_load;
+                Movej Make_p3_1,v400,z10,tool0\WObj:=wobj0;
+                open_clamp;
+                Movej Make_p3_2,speed8,z10,tool0\WObj:=wobj0;
+                close_clamp;
+                result3:=2;
+                clamp_load;
+            ENDIF
+            IF result4=0 THEN
+                clamp_load;
+                Movej Make_p4_1,v400,z10,tool0\WObj:=wobj0;
+                open_clamp;
+                Movej Make_p4_2,speed8,z10,tool0\WObj:=wobj0;
+                close_clamp;
+                result4:=2;
+                clamp_load;
+            ENDIF
+            IF result5=0 THEN
+                clamp_load;
+                Movej Make_p5_1,v400,z10,tool0\WObj:=wobj0;
+                open_clamp;
+                Movej Make_p5_2,speed8,z10,tool0\WObj:=wobj0;
+                close_clamp;
+                result5:=2;
+                clamp_load;
+            ENDIF
+            IF result6=0 THEN
+                clamp_load;
+                Movej Make_p6_1,v400,z10,tool0\WObj:=wobj0;
+                open_clamp;
+                Movej Make_p6_2,speed8,z10,tool0\WObj:=wobj0;
+                close_clamp;
+                result6:=2;
+                clamp_load;
+            ENDIF
+            IF result7=0 THEN
+                clamp_load;
+                Movej Make_p7_1,v400,z10,tool0\WObj:=wobj0;
+                open_clamp;
+                Movej Make_p7_2,speed8,z10,tool0\WObj:=wobj0;
+                close_clamp;
+                result7:=2;
+                clamp_load;
+            ENDIF
+            IF result8=0 THEN
+                clamp_load;
+                Movej Make_p8_1,v400,z10,tool0\WObj:=wobj0;
+                open_clamp;
+                Movej Make_p8_2,speed8,z10,tool0\WObj:=wobj0;
+                close_clamp;
+                result8:=2;
+                clamp_load;
+            ENDIF
+            IF result9=0 THEN
+                clamp_load;
+                Movej Make_p9_1,v400,z10,tool0\WObj:=wobj0;
+                open_clamp;
+                Movej Make_p9_2,speed8,z10,tool0\WObj:=wobj0;
+                close_clamp;
+                result9:=2;
+                clamp_load;
+            ENDIF
+            IF result10=0 THEN
+                clamp_load;
+                Movej Make_p10_1,v400,z10,tool0\WObj:=wobj0;
+                open_clamp;
+                Movej Make_p10_2,speed8,z10,tool0\WObj:=wobj0;
+                close_clamp;
+                result10:=2;
+                clamp_load;
+            ENDIF
+            IF result11=0 THEN
+                clamp_load;
+                Movej Make_p11_1,v400,z10,tool0\WObj:=wobj0;
+                open_clamp;
+                Movej Make_p11_2,speed8,z10,tool0\WObj:=wobj0;
+                close_clamp;
+                result11:=2;
+                clamp_load;
+            ENDIF
+            IF result12=0 THEN
+                clamp_load;
+                Movej Make_p12_1,v400,z10,tool0\WObj:=wobj0;
+                open_clamp;
+                Movej Make_p12_2,speed8,z10,tool0\WObj:=wobj0;
+                close_clamp;
+                result12:=2;
+                clamp_load;
+            ENDIF
+            IF result13=0 THEN
+                clamp_load;
+                Movej Make_p13_1,v400,z10,tool0\WObj:=wobj0;
+                open_clamp;
+                Movej Make_p13_2,speed8,z10,tool0\WObj:=wobj0;
+                close_clamp;
+                result13:=2;
+                clamp_load;
+            ENDIF
+            IF FALSE THEN
+                LoadingB1;
+            ENDIF
+        ENDFOR
+        !clamp_load;
+        MoveAbsJ JP50\NoEOffs,v1000,z50,tool0;
+    ENDPROC
+
+
+ENDMODULE
